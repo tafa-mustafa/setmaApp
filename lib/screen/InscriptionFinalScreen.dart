@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 
 import 'package:setma/l10n/gallery_localizations.dart';
-import 'package:setma/screen/HomeScreen.dart';
+import 'package:setma/screen/ListConsultationSreen.dart';
 
 class InscriptionFinalScreen extends StatelessWidget {
   const InscriptionFinalScreen();
@@ -129,7 +129,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
       form.save();
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => ListConsultation()),
       );
 
       // showInSnackBar(GalleryLocalizations.of(context)

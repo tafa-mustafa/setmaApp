@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:folding_cell/folding_cell/widget.dart';
 
-class HomeScreen extends StatelessWidget {
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+class ListConsultation extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Setmapp',
-      theme: ThemeData(primaryColor: Color.fromRGBO(109, 221, 208, 1)     ),
+      theme: ThemeData(primaryColor: Color.fromRGBO(109, 221, 208, 1)),
       home: MyHomePage(title: ' Consultations'),
     );
   }
@@ -266,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      // drawer: Drawer(),
       appBar: AppBar(
         // leading: IconButton(
         //     icon: Icon(Icons.menu),
@@ -275,11 +277,11 @@ class _MyHomePageState extends State<MyHomePage> {
         //     }),
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(
-              icon: Icon(FontAwesomeIcons.chartLine),
-              onPressed: () {
-                //
-              }),
+          // IconButton(
+          //     icon: Icon(FontAwesomeIcons.chartLine),
+          //     onPressed: () {
+          //       //
+          //     }),
         ],
       ),
       body: Container(
@@ -306,6 +308,22 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.only(right: 8.0),
               child: myTextItems("Presion", "25.5M"),
             ),
+            Container(
+                color: Colors.white,
+                child: ListView.builder(
+                  itemCount: 50,
+                  itemBuilder: (context, index) {
+                    return SimpleFoldingCell.create(
+                      frontWidget: _frontWidget(index),
+                      innerWidget: _innerWidget(index),
+                      onOpen: () => print("open"),
+                      onClose: () => print("close"),
+                      cellSize: Size(MediaQuery.of(context).size.width, 148.0),
+                      padding: EdgeInsets.all(16),
+                      borderRadius: 12.0,
+                    );
+                  },
+                )),
             // Padding(
             //   padding: const EdgeInsets.all(8.0),
             //   child: mychart2Items("Conversion", "0.9M", "+19% of target"),
@@ -320,6 +338,137 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _frontWidget(int index) {
+    return Builder(
+      builder: (BuildContext context) {
+        return Container(
+          color: Color.fromRGBO(109, 221, 208, 1),
+          alignment: Alignment.center,
+          child: Stack(children: [
+            Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'cell $index',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+            Positioned(
+              right: 5.0,
+              bottom: 0,
+              child: FlatButton(
+                onPressed: () {
+                  final _foldingCellState =
+                      context.findAncestorStateOfType<SimpleFoldingCellState>();
+                  _foldingCellState?.toggleFold();
+                },
+                child: Text(
+                  "Detail",
+                  style: TextStyle(
+                    color: Color.fromRGBO(109, 221, 208, 1),
+                  ),
+                ),
+                color: Colors.white,
+              ),
+            ),
+          ]),
+        );
+      },
+    );
+  }
+
+  Widget _innerWidget(int index) {
+    return Builder(
+      builder: (context) {
+        return Container(
+          color: Colors.white,
+          // alignment: Alignment.center,text
+          child: Stack(children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Text('Folding Cell part 2',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+            Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 28.0),
+                  child: Container(
+                      // color: Color.fromRGBO(51, 153, 255, 0),
+                      child: ListTile(
+                    leading: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: 48,
+                        height: 48,
+                        padding: EdgeInsets.symmetric(vertical: 4.0),
+                        alignment: Alignment.center,
+                        child: CircleAvatar(
+                          child: Icon(Icons.person),
+                          backgroundColor: Color.fromRGBO(109, 221, 208, 1),
+                        ),
+                      ),
+                    ),
+                    // trailing: (Icons.Iconarrow_forward, color: Colors.blue),
+                    //   title: Row(children: <Widget>[
+                    //     Text('prenom'),
+                    //     SizedBox(
+                    //       width: 10.0,
+                    //     ),
+                    //     Text('nom'),
+                    //   ]),
+                    //   subtitle: Row(children: <Widget>[
+                    //     Icon(FontAwesomeIcons.temperatureHigh),
+                    //     SizedBox(
+                    //       width: 10.0,
+                    //     ),
+                    //     Icon(FontAwesomeIcons.heartbeat)
+                    //   ]),
+
+                    //   // When a user taps the ListTile, navigate to the DetailScreen.
+                    //   // Notice that you're not only creating a DetailScreen, you're
+                    //   // also passing the current todo through to it.
+                    //   // onTap: () {
+                    //   //   Navigator.push(
+                    //   //     context,
+                    //   //     MaterialPageRoute(
+                    //   //       builder: (context) => DetailPatientScreen(),
+                    //   //       // Pass the arguments as part of the RouteSettings. The
+                    //   //       // DetailScreen reads the arguments from these settings.
+                    //   //       settings: RouteSettings(
+                    //   //         arguments: todos[index],
+                    //   //       ),
+                    //   //     ),
+                  )),
+                )),
+            Positioned(
+              right: 5.0,
+              bottom: 0,
+              child: FlatButton(
+                onPressed: () {
+                  final _foldingCellState =
+                      context.findAncestorStateOfType<SimpleFoldingCellState>();
+                  _foldingCellState?.toggleFold();
+                },
+                child: Text(
+                  "close",
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Color.fromRGBO(109, 221, 208, 1),
+              ),
+            ),
+          ]),
+        );
+      },
     );
   }
 }

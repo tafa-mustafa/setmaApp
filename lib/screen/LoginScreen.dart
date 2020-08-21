@@ -102,9 +102,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
 
   String _validatePassword(String value) {
     final passwordField = _passwordFieldKey.currentState;
-    if (passwordField.value.isEmpty) {
-      return ("Veuillez saisir un mot de passe");
-    }
+    if (passwordField.value.isEmpty) return "Veuillez saisir un mot de passe";
   }
 
   void _handleSubmitted() {
@@ -150,7 +148,7 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                 SizedBox(
                   height: 100.0,
                   child: Image.asset(
-                    "assets/images/Logo011.png",
+                    "assets/images/logo.png",
                     fit: BoxFit.contain,
                   ),
                 ),
