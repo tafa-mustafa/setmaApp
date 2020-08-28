@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:setma/screen/ListPatientScreen.dart';
-import 'package:setma/screen/QrCodeScreen.dart';
 //import 'package:setma/l10n/gallery_localizations.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -193,10 +192,13 @@ class TextFormFieldDemoState extends State<TextFormFieldDemo> {
                     child: Text("s'inscrire",
                         style: TextStyle(color: Color(0xff3399ff))),
                     onPressed: () {
+                      // print("OK");
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => QrCodeScreen()),
-                      );
+                        
+                      );*/
                     },
                   ),
                 ),
