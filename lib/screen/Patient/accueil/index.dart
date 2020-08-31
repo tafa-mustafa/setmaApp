@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:setma/screen/Medecin/accueil/components/body.dart';
+import 'package:setma/screen/Patient/accueil/components/body.dart';
 import 'package:setma/screen/components/menu.dart';
 import 'package:setma/screen/components/appBar.dart';
 
-class AccueiMedecin extends StatelessWidget {
+class AccueilPatient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,7 +11,7 @@ class AccueiMedecin extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: MedecinAppBar(),
-        drawer: MenuMedecin(),
+        drawer: MenuPatient(),
         body: Body(),
       ),
     );

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:setma/screen/InscriptionFinalScreen.dart';
+import 'package:setma/screen/anciens/InscriptionFinalScreen.dart';
 
 class QrCodeScreen extends StatefulWidget {
   @override

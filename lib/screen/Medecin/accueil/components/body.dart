@@ -8,6 +8,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final orientation = MediaQuery.of(context).orientation;
     return Background(
       child: SingleChildScrollView(
         //  scrollDirection: Axis.horizontal,
@@ -389,8 +390,12 @@ class Body extends StatelessWidget {
                           color: Colors.black,
                           height: 1,
                           thickness: 1,
-                          indent: MediaQuery.of(context).size.width * 0.25,
-                          endIndent: 10,
+                          indent: orientation == Orientation.portrait
+                              ? size.width * 0.25
+                              : size.width * 0.12,
+                          endIndent: orientation == Orientation.portrait
+                              ? 10
+                              : size.width * 0.22,
                         ),
                       ),
                     ],

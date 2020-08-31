@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:setma/screen/Login/login_screen.dart';
+import 'package:setma/screen/Patient/accueil/index.dart';
 import 'package:setma/screen/Signup/components/background.dart';
 import 'package:setma/screen/Signup/components/or_divider.dart';
 import 'package:setma/screen/Signup/components/social_icon.dart';
@@ -75,7 +76,10 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "S'INSCRIRE",
-              press: () {},
+              press: () {
+                Navigator.pop(context);
+                runApp(AccueilPatient());
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/gestures.dart' show DragStartBehavior;
 
 import 'package:setma/l10n/gallery_localizations.dart';
-import 'package:setma/screen/ListConsultationSreen.dart';
+import 'package:setma/screen/anciens/ListConsultationSreen.dart';
 
 class InscriptionFinalScreen extends StatelessWidget {
   const InscriptionFinalScreen();
